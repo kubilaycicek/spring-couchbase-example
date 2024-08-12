@@ -10,6 +10,6 @@ import java.util.Optional;
 
 @N1qlPrimaryIndexed
 @ViewIndexed(designDoc = "customer", viewName = "all")
-public interface CustomerRepository extends CouchbaseRepository<Customer, Long> {
+public interface CustomerRepository extends CouchbaseRepository<Customer, String> {
     Optional<Customer> findById(String id);
 }
