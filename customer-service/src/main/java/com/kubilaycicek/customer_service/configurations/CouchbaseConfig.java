@@ -1,6 +1,12 @@
 package com.kubilaycicek.customer_service.configurations;
 
+import com.couchbase.client.java.Cluster;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.CacheManager;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.couchbase.SimpleCouchbaseClientFactory;
+import org.springframework.data.couchbase.cache.CouchbaseCacheManager;
 import org.springframework.data.couchbase.config.AbstractCouchbaseConfiguration;
 import org.springframework.data.couchbase.repository.config.EnableCouchbaseRepositories;
 
@@ -8,29 +14,41 @@ import org.springframework.data.couchbase.repository.config.EnableCouchbaseRepos
 @EnableCouchbaseRepositories(basePackages = {"com.kubilaycicek.customer_service.repository.CustomerRepository"})
 public class CouchbaseConfig extends AbstractCouchbaseConfiguration {
 
-    public static final String NODE_LIST = "localhost";
-    public static final String BUCKET_NAME = "bucket";
-    public static final String BUCKET_USERNAME = "your_bucket_username";
-    public static final String BUCKET_PASSWORD = "your_bucket_password";
+    @Value("${couchbase.url}")
+    private String url;
+    @Value("${couchbase.bucket}")
+    private String bucket;
+    @Value("${couchbase.username}")
+    private String username;
+    @Value("${couchbase.password}")
+    private String password;
 
     @Override
     public String getConnectionString() {
-        return NODE_LIST;
+        return url;
     }
 
     @Override
     public String getUserName() {
-        return BUCKET_USERNAME;
+        return username;
     }
 
     @Override
     public String getPassword() {
-        return BUCKET_PASSWORD;
+        return password;
     }
 
     @Override
     public String getBucketName() {
-        return BUCKET_NAME;
+        return bucket;
     }
 
+    @Bean(destroyMethod = "disconnect")
+    public Cluster cluster() {
+        return Cluster.connect(url, username, password);
+    }
+    @Bean
+    public CacheManager cacheManager() {
+        return CouchbaseCacheManager.create(new SimpleCouchbaseClientFactory(cluster(), getBucketName(), null));
+    }
 }

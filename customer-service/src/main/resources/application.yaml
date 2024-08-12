@@ -1,5 +1,10 @@
 spring:
   application:
     name: customer-service
+couchbase:
+  bucket: bucket
+  url: localhost
+  username: Administrator
+  password: 123456
 server:
   port: 9091
