@@ -1,22 +1,22 @@
-package com.kubilaycicek.customer_service.service;
+package com.kubilaycicek.customer_service.service.impl;
 
 import com.kubilaycicek.customer_service.api.payload.dto.CustomerDTO;
 import com.kubilaycicek.customer_service.exception.CustomerNotFoundException;
 import com.kubilaycicek.customer_service.api.payload.model.Customer;
 import com.kubilaycicek.customer_service.repository.CustomerRepository;
+import com.kubilaycicek.customer_service.service.CustomerService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Service
+@RequiredArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
-
-    public CustomerServiceImpl(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
-    }
 
     @Override
     public CustomerDTO saveCustomerDTO(CustomerDTO customerDTO) {

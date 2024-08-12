@@ -3,19 +3,17 @@ package com.kubilaycicek.customer_service.api.controller;
 import com.kubilaycicek.customer_service.api.payload.request.*;
 import com.kubilaycicek.customer_service.api.payload.response.*;
 import com.kubilaycicek.customer_service.service.CustomerService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(("api/v1/customer"))
 public class CustomerController {
 
     private final CustomerService customerService;
-
-    public CustomerController(CustomerService customerService) {
-        this.customerService = customerService;
-    }
 
     @PostMapping
     public ResponseEntity<SaveCustomerResponse> saveCustomer(@RequestBody SaveCustomerRequest saveCustomerRequest) {
@@ -24,7 +22,7 @@ public class CustomerController {
 
     @PutMapping
     public ResponseEntity<SaveCustomerResponse> updateCustomer(@RequestBody SaveCustomerRequest saveCustomerRequest) {
-        return ResponseEntity.ok(new SaveCustomerResponse(customerService.saveCustomerDTO(saveCustomerRequest.customerDTO())));
+        return ResponseEntity.ok(new SaveCustomerResponse(customerService.updateCustomerDTO(saveCustomerRequest.customerDTO())));
     }
 
     @DeleteMapping("{id}")

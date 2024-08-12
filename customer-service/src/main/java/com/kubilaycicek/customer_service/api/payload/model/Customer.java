@@ -1,6 +1,9 @@
 package com.kubilaycicek.customer_service.api.payload.model;
 
 import jakarta.validation.constraints.NotEmpty;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import nonapi.io.github.classgraph.json.Id;
 import org.springframework.data.couchbase.core.mapping.Document;
 import org.springframework.data.couchbase.core.mapping.Field;
@@ -8,6 +11,9 @@ import org.springframework.data.couchbase.core.mapping.Field;
 import java.util.UUID;
 
 @Document
+@Getter
+@Setter
+@NoArgsConstructor
 public class Customer {
 
     @Id
@@ -28,31 +34,4 @@ public class Customer {
         this.email = email;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public @NotEmpty(message = "Email must not be empty !") String getName() {
-        return name;
-    }
-
-    public void setName(@NotEmpty(message = "Email must not be empty !") String name) {
-        this.name = name;
-    }
-
-    public @NotEmpty(message = "Email must not be empty !") String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(@NotEmpty(message = "Email must not be empty !") String surname) {
-        this.surname = surname;
-    }
-
-    public @NotEmpty(message = "Email must not be empty !") String getEmail() {
-        return email;
-    }
-
-    public void setEmail(@NotEmpty(message = "Email must not be empty !") String email) {
-        this.email = email;
-    }
 }
