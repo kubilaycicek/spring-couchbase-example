@@ -1,6 +1,10 @@
 spring:
   application:
-    name: customer-service
+    name: CUSTOMER-SERVICE
+  eureka:
+    client:
+      serviceUrl:
+        defaultZone: http://localhost:8761/eureka/
 couchbase:
   bucket: bucket
   url: localhost
