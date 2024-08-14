@@ -12,16 +12,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:9091/api/v1/customer/list",
+					"raw": "http://localhost:9090/customer-service/list",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "9091",
+					"port": "9090",
 					"path": [
-						"api",
-						"v1",
-						"customer",
+						"customer-service",
 						"list"
 					]
 				}
@@ -34,17 +32,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:9091/api/v1/customer/39c72867-9078-4427-af3d-0a8076c27687",
+					"raw": "http://localhost:9090/customer-service/25b4963e-7c02-4e91-b9da-d7e5675e3a2e",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "9091",
+					"port": "9090",
 					"path": [
-						"api",
-						"v1",
-						"customer",
-						"39c72867-9078-4427-af3d-0a8076c27687"
+						"customer-service",
+						"25b4963e-7c02-4e91-b9da-d7e5675e3a2e"
 					]
 				}
 			},
@@ -80,7 +76,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"customerDTO\":{\r\n        \"name\":\"kubilay\",\r\n        \"surname\":\"çiçek\",\r\n        \"email\":\"kubilaycicek0693@gmail.com\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"customerDTO\":{\r\n        \"name\":\"kubilay\",\r\n        \"surname\":\"çiçek\",\r\n        \"email\":\"kubilaycicek0693@gmail.com\",\r\n        \"adress\":\"\",\r\n        \"phone\":\"\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -88,17 +84,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:9091/api/v1/customer/39c72867-9078-4427-af3d-0a8076c27687",
+					"raw": "http://localhost:9090/customer-service",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "9091",
+					"port": "9090",
 					"path": [
-						"api",
-						"v1",
-						"customer",
-						"39c72867-9078-4427-af3d-0a8076c27687"
+						"customer-service"
 					]
 				}
 			},
@@ -111,7 +104,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"customerDTO\":{\r\n        \"id\":\"39c72867-9078-4427-af3d-0a8076c27687\",\r\n        \"name\":\"kubilayyy\",\r\n        \"surname\":\"çiçek\",\r\n        \"email\":\"kubilaycicek0693@gmail.com\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"customerDTO\":{\r\n        \"id\":\"39c72867-9078-4427-af3d-0a8076c27687\",\r\n        \"name\":\"kubilayyy\",\r\n        \"surname\":\"çiçek\",\r\n        \"email\":\"kubilaycicek0693@gmail.com\",\r\n        \"adress\":\"\",\r\n        \"phone\":\"\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -119,16 +112,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:9091/api/v1/customer",
+					"raw": "http://localhost:9090/customer-service",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "9091",
+					"port": "9090",
 					"path": [
-						"api",
-						"v1",
-						"customer"
+						"customer-service"
 					]
 				}
 			},
