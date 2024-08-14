@@ -1,6 +1,5 @@
 package com.kubilaycicek.customer_service.api.payload.model;
 
-import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,20 +17,22 @@ public class Customer {
 
     @Id
     private String id = UUID.randomUUID().toString();
-    @NotEmpty(message = "Email must not be empty !")
     @Field
     private String name;
-    @NotEmpty(message = "Email must not be empty !")
     @Field
     private String surname;
     @Field
-    @NotEmpty(message = "Email must not be empty !")
     private String email;
+    @Field
+    private String phone;
+    @Field
+    private String address;
 
-    public Customer(String name, String surname, String email) {
+    public Customer(String name, String surname, String email, String phone, String address) {
         this.name = name;
         this.surname = surname;
         this.email = email;
+        this.phone = phone;
+        this.address = address;
     }
-
 }

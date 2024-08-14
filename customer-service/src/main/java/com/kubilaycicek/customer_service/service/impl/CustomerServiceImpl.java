@@ -8,7 +8,6 @@ import com.kubilaycicek.customer_service.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,8 +19,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO saveCustomerDTO(CustomerDTO customerDTO) {
-        Customer customer = customerRepository.save(new Customer(customerDTO.name(), customerDTO.surname(), customerDTO.email()));
-        return new CustomerDTO(customer.getId(), customerDTO.name(), customerDTO.surname(), customerDTO.email());
+        Customer customer = customerRepository.save(new Customer(customerDTO.name(), customerDTO.surname(), customerDTO.email(), customerDTO.phone(), customerDTO.address()));
+
+        return new CustomerDTO(customer.getId(), customerDTO.name(), customerDTO.surname(), customerDTO.email(), customer.getPhone(), customer.getAddress());
     }
 
     @Override
@@ -33,21 +33,20 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setSurname(customer.getSurname());
         customerRepository.save(customer);
 
-        return new CustomerDTO(customer.getId(), customer.getName(), customer.getSurname(), customer.getEmail());
+        return new CustomerDTO(customer.getId(), customerDTO.name(), customerDTO.surname(), customerDTO.email(), customer.getPhone(), customer.getAddress());
 
     }
 
     @Override
     public List<CustomerDTO> getCustomerDTOList() {
-        List<CustomerDTO> customerDTOList = new ArrayList<>();
-        customerRepository.findAll().forEach(item -> customerDTOList.add(new CustomerDTO(item.getId(), item.getName(), item.getSurname(), item.getEmail())));
-        return customerDTOList;
+        return customerRepository.findAll().stream().map(item -> new CustomerDTO(item.getId(), item.getName(), item.getSurname(), item.getEmail(), item.getPhone(), item.getAddress())).toList();
+
     }
 
     @Override
     public CustomerDTO getCustomerById(String id) {
         Customer customer = getCustomerDb(id);
-        return new CustomerDTO(customer.getId(), customer.getName(), customer.getSurname(), customer.getEmail());
+        return new CustomerDTO(customer.getId(), customer.getName(), customer.getSurname(), customer.getEmail(), customer.getPhone(), customer.getAddress());
     }
 
 
